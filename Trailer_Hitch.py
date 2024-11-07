@@ -1,8 +1,8 @@
+WELDING_CELL = "02"
+
 class TrailerHitch:
     """
-
     """
-
     def __init__(self, characters: list[int], part_number: int, series: int, status_ok: bool, date: str):
         self.characters = characters
         self.part_number = part_number
@@ -15,6 +15,9 @@ class TrailerHitch:
 
     def set_characters(self, characters: list[int]):
         self.characters = characters
+
+    def get_character_val(self, position: int):
+        return self.characters[position]
 
     def set_character_val (self, value: int, position: int):
         self.characters[position] = value
@@ -44,9 +47,55 @@ class TrailerHitch:
         self.date = date
 
     def get_model(self):
-        model = []
-        return  model
+        if self.status_ok:
+            if self.series == 1:
+                marker_text = "TESLA_"
+            elif self.series == 2:
+                marker_text = "TESLA_"
+            elif self.series == 3:
+                marker_text = "AUDI_"
+            elif self.series == 4:
+                marker_text = "VW_CB_"
+            elif self.series == 5:
+                marker_text = "VW_CB_"
+            elif self.series == 6:
+                marker_text = "BR167N"
+            elif self.series == 7:
+                marker_text = "BR167N"
+            elif self.series == 8:
+                marker_text = "AUDIOZ"
+            elif self.series == 9:
+                marker_text = "AUDIOZ"
+            else:
+                marker_text = "NoIden"
+            marker_text = marker_text + WELDING_CELL
+        else:
+            marker_text = "REJECTED"
+        return  marker_text
 
     def get_status(self):
         pass
 
+
+    def get_steps_number(self):
+        if self.series == 1:
+            result = 3
+        elif self.series == 2:
+            result = 3
+        elif self.series == 3:
+            result = 4
+        elif self.series == 4:
+            result = 4
+        elif self.series == 5:
+            result = 3
+        elif self.series == 6:
+            result = 3
+        elif self.series == 7:
+            result = 3
+        elif self.series == 8:
+            result = 4
+        elif self.series == 9:
+            result = 4
+        else:
+            result = -1
+        return result
