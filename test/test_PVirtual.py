@@ -1,6 +1,6 @@
 import pytest
 
-from PVirtual import PVirtual
+from pvirtual import PVirtual
 
 @pytest.fixture
 def pieza():

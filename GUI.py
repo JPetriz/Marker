@@ -1,4 +1,8 @@
 from tkinter import *
+from collections import deque
+
+from pvirtual import PVirtual
+from trailer_hitch import TrailerHitch
 
 FILA_0_HEIGHT = 50
 FILA_1_HEIGHT = 80

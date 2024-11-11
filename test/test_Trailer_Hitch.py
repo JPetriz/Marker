@@ -1,10 +1,11 @@
 import pytest
 
-from Trailer_Hitch import TrailerHitch
+from trailer_hitch import TrailerHitch
 
 @pytest.fixture
 def barra():
     return TrailerHitch([1, 2, 3, 4, 5], 10, 8, True, "TBD")
+
 
 def test_get_characters(barra):
     assert barra.get_characters() == [1, 2, 3, 4, 5]
@@ -13,6 +14,7 @@ def test_get_characters(barra):
 def test_set_characters(barra):
     barra.set_characters([5, 4, 3, 2, 1])
     assert barra.get_characters() == [5, 4, 3, 2, 1]
+
 
 def test_get_character_val(barra):
     assert barra.get_character_val(4) == 5
@@ -64,7 +66,7 @@ def test_get_model(barra):
 
 
 def test_get_status(barra):
-    assert False
+    assert barra.get_status() == "AUDIOZ02"
 
 
 def test_get_steps_number(barra):
