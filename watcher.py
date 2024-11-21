@@ -1,6 +1,7 @@
 import logging, time
 
 from watchfiles import watch
+from cola_deque import ColaDeque
 
 DEBUG = True
 level = logging.DEBUG if DEBUG else logging.ERROR
@@ -10,12 +11,15 @@ STDMAN_FILE = 'archivotest.txt' #file location
 ROW_LAST_CHAR = 10      # ROW where is located the last character
 
 
-def watch_file(path: str):
+def watch_file(path: str, piece_to_mark: ColaDeque):
     logging.info(" Starting watching file %s ", path)
     for changes in watch(path, raise_interrupt=False, rust_timeout= 5000):
-        #Poner Codigo aquui
+        logging.debug(f"   Changes detected on {path}")
         character = get_last_seams(path)
-        print(character)
+        if character != last_character:
+            piece_to_mark.queue(character)
+            logging.debug(f"   Character: {character} added to queue")
+            last_character = character
 
 
 def get_last_seams(file_name: str):
@@ -34,5 +38,4 @@ def get_last_seams(file_name: str):
 
 
 if __name__ == '__main__':
-    #print(last_seam('archivotest.txt', 10))
-    watch_file(STDMAN_FILE)
+

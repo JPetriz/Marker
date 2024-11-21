@@ -1,8 +1,8 @@
 from tkinter import *
-from collections import deque
 
 from pvirtual import PVirtual
 from trailer_hitch import TrailerHitch
+from cola_deque import ColaDeque
 
 FILA_0_HEIGHT = 50
 FILA_1_HEIGHT = 80
@@ -113,3 +113,11 @@ button_quit = Button(root, text="Quit", command=root.quit)
 button_quit.pack()
 
 root.mainloop()
+
+"""
+PARTE MAIN
+"""
+
+pieces_to_mark = ColaDeque()
+piece_list = ColaDeque()
+
