@@ -3,6 +3,7 @@ import logging, firebirdsql
 from cola_deque import ColaDeque
 from register import Register
 from trailer_hitch import TrailerHitch
+from pvirtual import PVirtual
 
 DEBUG = True
 level = logging.DEBUG if DEBUG else logging.ERROR
@@ -13,16 +14,16 @@ DATABASE = "D:/weldQAS/Data/WELDDB60.GBD"
 USER = "SYSDBA"
 PASSWORD = "masterkey"
 
-serie = -1
+serie_global = -1
+virtual_pieces = [PVirtual() for x in range(10)]
 
-
-def get_registers(character: str) -> Register:
+def get_registers(character: str) -> list[Register]:
     """
     This function consults the HKS database, search for all the seams with the same character and return them
 in a register list object
 
-    :param character:
-    :return Register:
+    :param character: Number or welding process
+    :return: List of welding seams
     """
     logging.info(f"   Accessing Data Base")
     try:
@@ -32,7 +33,8 @@ in a register list object
         cursor = conn.cursor()
 
         # Get the quantity of seams there are with the DESCRIPTION0 = character
-        query = f"SELECT COUNT(DESCRIPTION0) FROM RESULT WHERE (DESCRIPTION0 = '{character}') AND (MARKMAX > 0.0)"
+        query = (f"SELECT COUNT(DESCRIPTION0) FROM RESULT "
+                 f"WHERE (DESCRIPTION0 = '{character}') AND (MARKMAX > 0.0)")
 
         logging.debug(f"  Executing query: {query}")
 
@@ -54,8 +56,9 @@ in a register list object
             MCVALUE3        --->    Wire
             """
             # Get all the register values with the DESCRIPTION0 = character
-            query = f"""SELECT DESCRIPTION0, TECHINDENTNO, MARKMAX, REGISTRATIONDATETIME, MCVALUE1, MCVALUE2, MCVALUE3
-            FROM RESULT WHERE (DESCRIPTION0 = '{character}') AND (MARKMAX > 0.0) ORDER BY TECHINDENTNO ASC"""
+            query = (f"SELECT DESCRIPTION0, TECHINDENTNO, MARKMAX, REGISTRATIONDATETIME, MCVALUE1, MCVALUE2, MCVALUE3 "
+                     f"FROM RESULT WHERE (DESCRIPTION0 = '{character}') AND (MARKMAX > 0.0) "
+                     f"ORDER BY TECHINDENTNO ASC")
 
             logging.debug(f"  Executing query: {query}")
 
@@ -146,32 +149,163 @@ in a register list object
 def match_registers(registers: list[Register]) -> list[TrailerHitch]:
     size = len(registers)
     new_serie = registers[size -1].get_serie()
-    logging.debug(f"  Starting match_registers with New_serie: {new_serie}  serie: {serie}")
-    if serie != -1:
-        if new_serie != serie:
-            backup_virtual_pieces(serie)
-            serie = new_serie
-            recover_virtual_pieces(serie)
+    logging.debug(f"  Starting match_registers with New_serie: {new_serie}  serie: {serie_global}")
+    if serie_global != -1:
+        if new_serie != serie_global:
+            backup_virtual_pieces(serie_global)
+            serie_global = new_serie
+            recover_virtual_pieces(serie_global)
         else:
             #TBD
     else:
-        serie = new_serie
-        recover_virtual_pieces(serie)
+        serie_global = new_serie
+        recover_virtual_pieces(serie_global)
+
     processed = process_piece(registers)
-    backup_virtual_pieces(serie)
+    backup_virtual_pieces(serie_global)
     return processed
 
 
-def scroll_virtual_pieces():
-    pass
+def scroll_virtual_pieces() -> None:
+    """
+    This function performs a shifting of virtual pieces. (bitwise kind of)
+    :return: Nothing
+    """
+    if (serie_global > 0) and (serie_global < 10) :
+        c = 0
+        if serie_global == 1:
+            c =  3
+        elif serie_global == 2:
+            c = 3
+        elif serie_global == 3:
+            c = 4
+        elif serie_global == 4:
+            c = 4
+        elif serie_global == 5:
+            c = 5
+        elif serie_global == 6:
+            c = 6
+        elif serie_global == 7:
+            c = 7
+        elif serie_global == 8:
+            c = 8
+        elif serie_global == 9:
+            c = 9
+        c -= 1
+        for i in range(c, 0, -1):
+            virtual_pieces[c] = virtual_pieces[c-1]
+        virtual_pieces[0] = PVirtual()
+    else:
+        logging.info(f"   A incorrect serie has been detected: {serie_global}")
 
 
-def backup_virtual_pieces(serie: int):
-    pass
+def backup_virtual_pieces(serie: int) -> None:
+    """
+    This function stores the virtual pieces in the DB , this function is used when a different model running than the
+current one is detected (is detected with the "serie" value)
+    :param serie:
+    :return: nothing
+    """
+    pieces_to_backup = 0
+    #Key means the index of the data on the Database
+    key = -10
+    logging.debug(f"  Starting backup_virtual_pieces() with serie: {serie} ")
+    if (serie > 0) and (serie < 10) :
+        if serie == 1:
+            # Registers in MATCH table of Model1 goes from 1 to 3
+            key = 1
+            pieces_to_backup = 3
+        elif serie == 2:
+            # Registers in MATCH table of Model2 goes from 4 to 6
+            key = 4
+            pieces_to_backup = 3
+        elif serie == 3:
+            # Registers in MATCH table of Model3 goes from 7 to 10
+            key = 7
+            pieces_to_backup = 3
+        elif serie == 4:
+            # Registers in MATCH table of Model4 goes from 11 to 14
+            key = 11
+            pieces_to_backup = 4
+        elif serie == 5:
+            # Registers in MATCH table of Model5 goes from 15 to 18
+            key = 15
+            pieces_to_backup = 4
+        elif serie == 6:
+            # Registers in MATCH table of Model6 goes from 19 to 22
+            key = 19
+            pieces_to_backup = 4
+        elif serie == 7:
+            # Registers in MATCH table of Model7 goes from 19 to 22
+            key = 19
+            pieces_to_backup = 4
+        elif serie == 8:
+            # Registers in MATCH table of Model8 goes from 23 to 31
+            key = 23
+            pieces_to_backup = 9
+        elif serie == 9:
+            # Registers in MATCH table of Model8 goes from 23 to 31
+            key = 23
+            pieces_to_backup = 9
+
+        query = ["" for i in range(pieces_to_backup)]
+        for i in range(pieces_to_backup):
+            query[i] = (f"UPDATE MATCH SET "
+                        f"PASO_1 = {b2int(virtual_pieces[i].get_status_ok_val(0))}, "
+                        f"PASO_2 = {b2int(virtual_pieces[i].get_status_ok_val(1))}, "
+                        f"PASO_3 = {b2int(virtual_pieces[i].get_status_ok_val(2))}, "
+                        f"PASO_4 = {b2int(virtual_pieces[i].get_status_ok_val(3))}, "
+                        f"PASO_5 = {b2int(virtual_pieces[i].get_status_ok_val(4))}, "
+                        f"PASO_1_CHARACTER = {virtual_pieces[i].get_character_val(0)}, "
+                        f"PASO_2_CHARACTER = {virtual_pieces[i].get_character_val(1)}, "
+                        f"PASO_3_CHARACTER = {virtual_pieces[i].get_character_val(2)}, "
+                        f"PASO_4_CHARACTER = {virtual_pieces[i].get_character_val(3)}, "
+                        f"PASO_5_CHARACTER = {virtual_pieces[i].get_character_val(4)} "
+                        f"WHERE \"KEY\" = {key +1};\n")
+            logging.debug(f"   Generated query: {query[i]}")
+            # Saves virtual piece in the DB
+            if run_query(query[i]) is False:
+                logging.error("   Virtual piece couldn't be saved in DB")
+        logging.debug("   backup_virtual_pieces() has ended")
+
+    else:
+        logging.error(f"   A incorrect serie has been detected: {serie}")
 
 
-def recover_virtual_pieces(serie: int):
-    pass
+def recover_virtual_pieces(serie: int) -> None:
+    logging.debug(f"  Starting recover_virtual_pieces() with serie: {serie} ")
+    new_serie = serie_global
+
+    # Reassign values to new_serie value because these models uses 2 series for running (SIDE 1 and SIDE 2)
+    if (new_serie == 5) or (new_serie == 7):
+        new_serie = 6
+    if new_serie == 9:
+        new_serie = 8
+
+    query = ("SELECT PASO_1, PASO_2, PASO_3, PASO_4, PASO_5, "
+             "PASO_1_CHARACTER, PASO_2_CHARACTER, PASO_3_CHARACTER, PASO_4_CHARACTER, PASO_5_CHARACTER, "
+             f"\"KEY\" FROM MATCH WHERE SERIE = {new_serie} ORDER BY \"KEY\" ASC;")
+
+    logging.debug(f"  Generated query: {query}")
+    result = query_db(query, 11) # the number 11 is fixed
+    size = len(result)
+    if size >= 0:
+        for i in range(size):
+            characters = ["","","","",""]
+            status_ok = [False, False, False, False, False]
+            for j in range(5):
+                value = result[i][j]
+                if value >= 1:
+                    status_ok[j]= True
+            for j in range(5, 10):
+                characters[j-5] = result[i][j]
+            if (i < len(virtual_pieces)):
+                virtual_pieces[i].set_status_ok(status_ok)
+                virtual_pieces[i].set_characters(characters)
+            else
+                logging.error("   A surplus virtual piece was recovered and could not be stored")
+    else:
+        logging.info(f"   0 Registers were found in the DB with the serie = {new_serie}")
 
 
 def run_query(query: str) -> bool:
@@ -182,7 +316,7 @@ def b2int(boo: bool) -> int:
     pass
 
 
-def query_db(query: str, size: int):
+def query_db(query: str, size: int): -> list[list[str]]
     pass
 
 

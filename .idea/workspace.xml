@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e66f2e12-405f-431b-a7f7-7e0c44e20241" name="Changes" comment="no me acuerdo">
-      <change afterPath="$PROJECT_DIR$/character_processor.py" afterDir="false" />
+    <list default="true" id="e66f2e12-405f-431b-a7f7-7e0c44e20241" name="Changes" comment="un chingo de cosas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/register.py" beforeDir="false" afterPath="$PROJECT_DIR$/register.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trailer_hitch.py" beforeDir="false" afterPath="$PROJECT_DIR$/trailer_hitch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/watcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/watcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/character_processor.py" beforeDir="false" afterPath="$PROJECT_DIR$/character_processor.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,7 +218,8 @@
       <workItem from="1731614824843" duration="8290000" />
       <workItem from="1732206070821" duration="4937000" />
       <workItem from="1732397129106" duration="2106000" />
-      <workItem from="1732492893072" duration="15025000" />
+      <workItem from="1732492893072" duration="15076000" />
+      <workItem from="1732546352858" duration="20277000" />
     </task>
     <task id="LOCAL-00001" summary="Actualizaciones en serial y watcher">
       <option name="closed" value="true" />
@@ -271,7 +269,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732206203203</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="un chingo de cosas">
+      <option name="closed" value="true" />
+      <created>1732516486555</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1732516486555</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,14 +300,15 @@
     <MESSAGE value="Se agregan test" />
     <MESSAGE value="Se agregan cositas y se definne prog GUI como principal" />
     <MESSAGE value="no me acuerdo" />
-    <option name="LAST_COMMIT_MESSAGE" value="no me acuerdo" />
+    <MESSAGE value="un chingo de cosas" />
+    <option name="LAST_COMMIT_MESSAGE" value="un chingo de cosas" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Marker$pruebas.coverage" NAME="pruebas Coverage Results" MODIFIED="1730418406135" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Marker$GUI.coverage" NAME="GUI Coverage Results" MODIFIED="1731613903023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Marker$GUI.coverage" NAME="GUI Coverage Results" MODIFIED="1732548616169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Marker$main.coverage" NAME="main Coverage Results" MODIFIED="1729189198102" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Marker$.coverage" NAME=" Coverage Results" MODIFIED="1732458257351" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
-    <SUITE FILE_PATH="coverage/Marker$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1732513009949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
+    <SUITE FILE_PATH="coverage/Marker$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1732570609485" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
     <SUITE FILE_PATH="coverage/Marker$test_tkinter.coverage" NAME="test tkinter Coverage Results" MODIFIED="1729012035375" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Marker$watcher.coverage" NAME="watcher Coverage Results" MODIFIED="1730923157605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Marker$serial_marcadora.coverage" NAME="serial_marcadora Coverage Results" MODIFIED="1730412013087" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
