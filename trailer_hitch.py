@@ -49,23 +49,23 @@ class TrailerHitch:
     def get_model(self):
         if self.status_ok:
             if self.series == 1:
-                marker_text = "TESLA_"
+                marker_text = "MODEL1"
             elif self.series == 2:
-                marker_text = "TESLA_"
+                marker_text = "MODEL2"
             elif self.series == 3:
-                marker_text = "AUDI_"
+                marker_text = "MODEL3"
             elif self.series == 4:
-                marker_text = "VW_CB_"
+                marker_text = "MODEL4"
             elif self.series == 5:
-                marker_text = "VW_CB_"
+                marker_text = "MODEL5"
             elif self.series == 6:
-                marker_text = "BR167N"
+                marker_text = "MODEL6"
             elif self.series == 7:
-                marker_text = "BR167N"
+                marker_text = "MODEL7"
             elif self.series == 8:
-                marker_text = "AUDIOZ"
+                marker_text = "MODEL8"
             elif self.series == 9:
-                marker_text = "AUDIOZ"
+                marker_text = "MODEL9"
             else:
                 marker_text = "NoIden"
             marker_text = marker_text + WELDING_CELL

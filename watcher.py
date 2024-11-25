@@ -1,4 +1,4 @@
-import logging, time
+import logging
 
 from watchfiles import watch
 from cola_deque import ColaDeque
@@ -14,16 +14,16 @@ ROW_LAST_CHAR = 10      # ROW where is located the last character
 def watch_file(path: str, piece_to_mark: ColaDeque):
     logging.info(" Starting watching file %s ", path)
     for changes in watch(path, raise_interrupt=False, rust_timeout= 5000):
-        logging.debug(f"   Changes detected on {path}")
-        character = get_last_seams(path)
+        logging.info(f"   Changes detected on {path}")
+        character = get_last_character(path)
         if character != last_character:
-            piece_to_mark.queue(character)
+            piece_to_mark.queue(character)      #a new character is place on the top of the queue
             logging.debug(f"   Character: {character} added to queue")
             last_character = character
 
 
-def get_last_seams(file_name: str):
-    logging.debug("  Starting last_seam")
+def get_last_character(file_name: str):
+    logging.debug("  Starting get_last_character")
     target_line = ROW_LAST_CHAR
     try:
         with open(file_name, 'r') as file:
@@ -38,4 +38,4 @@ def get_last_seams(file_name: str):
 
 
 if __name__ == '__main__':
-
+    pass

@@ -1,7 +1,7 @@
 class Register:
 
-    def __init__(self, date: str, character: int, program: int, serie: int, score: float, status_ok: bool,
-                 mark: str, voltage: str, current: str, wire: str, gas: str):
+    def __init__(self, date: str = "", character: int = 0, program: int = 0, serie: int = 0, score: float = 0.0, status_ok: bool = False,
+                 mark: str = "", voltage: str = "", current: str = "", wire: str = "", gas: str = ""):
         self.date = date
         self.character = character
         self.program = program
