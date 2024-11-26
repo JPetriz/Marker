@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e66f2e12-405f-431b-a7f7-7e0c44e20241" name="Changes" comment="un chingo de cosas">
+    <list default="true" id="e66f2e12-405f-431b-a7f7-7e0c44e20241" name="Changes" comment="se continua con elaboracion de programa character_processor.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/character_processor.py" beforeDir="false" afterPath="$PROJECT_DIR$/character_processor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +23,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "JPetriz"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/JPetriz/Marker.git",
+    "accountId": "b2cd9f1d-b935-4917-bb24-919b90b5e983"
+  }
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/GUI.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/watcher.py" root0="SKIP_INSPECTION" />
@@ -219,7 +231,7 @@
       <workItem from="1732206070821" duration="4937000" />
       <workItem from="1732397129106" duration="2106000" />
       <workItem from="1732492893072" duration="15076000" />
-      <workItem from="1732546352858" duration="20277000" />
+      <workItem from="1732546352858" duration="25497000" />
     </task>
     <task id="LOCAL-00001" summary="Actualizaciones en serial y watcher">
       <option name="closed" value="true" />
@@ -277,7 +289,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732516486555</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="se continua con elaboracion de programa character_processor.py">
+      <option name="closed" value="true" />
+      <created>1732575776059</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1732575776059</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,11 +321,12 @@
     <MESSAGE value="Se agregan cositas y se definne prog GUI como principal" />
     <MESSAGE value="no me acuerdo" />
     <MESSAGE value="un chingo de cosas" />
-    <option name="LAST_COMMIT_MESSAGE" value="un chingo de cosas" />
+    <MESSAGE value="se continua con elaboracion de programa character_processor.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="se continua con elaboracion de programa character_processor.py" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Marker$pruebas.coverage" NAME="pruebas Coverage Results" MODIFIED="1730418406135" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Marker$GUI.coverage" NAME="GUI Coverage Results" MODIFIED="1732548616169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Marker$GUI.coverage" NAME="GUI Coverage Results" MODIFIED="1732591776271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Marker$main.coverage" NAME="main Coverage Results" MODIFIED="1729189198102" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Marker$.coverage" NAME=" Coverage Results" MODIFIED="1732458257351" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/Marker$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1732570609485" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
